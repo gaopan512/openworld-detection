@@ -19,7 +19,7 @@ def main():
 
     #执行目标检测
     detections=detector.detect(
-        image_path=PROJECT_ROOT/"bus.jpg",
+        image_path=PROJECT_ROOT/"data/demo/bus.jpg",
         classes=["person","car","bicycle","dog"],
         confidence=0.25
     )
