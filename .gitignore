@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# Conda / Python
+.venv/
+.env
+
+# Model weights
+models/*.pt
+*.onnx
+
+# Large datasets
+data/public/
+
+# Generated outputs
+outputs/detections/
+outputs/logs/
