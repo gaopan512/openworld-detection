@@ -37,7 +37,7 @@ class OpenWorldDetector:
         #检查置信度阈值
         if not 0<=confidence<=1:
             raise ValueError("置信度必须在0到1之间")
-        #检查检测类别
+        #设置检测类别
         self.model.set_classes(classes)
 
         #执行推理
