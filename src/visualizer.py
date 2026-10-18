@@ -1,4 +1,17 @@
 import cv2
+import hashlib
+
+def get_class_color(class_name):
+    """根据类别名称生成稳定的BGR颜色"""
+
+    digest = hashlib.md5(class_name.encode("utf-8")).digest()
+
+    b = 55 + digest[0] % 201
+    g = 55 + digest[1] % 201
+    r = 55 + digest[2] % 201
+
+    return (b, g, r)
+
 
 def draw_detections(image_path,detections):
     """在图片上绘制目标检测结果"""
@@ -7,13 +20,6 @@ def draw_detections(image_path,detections):
 
     if image is None:
         raise ValueError(f"无法读取图片：{image_path}")
-    #不同类别对应不同颜色
-    colors = {
-        "person":(0,255,0),
-        "car":(255,0,0),
-        "bicycle":(0,255,255),
-        "dog":(0,0,255)
-        }
     #遍历所有检测结果
     for detection in detections:
 
@@ -23,7 +29,7 @@ def draw_detections(image_path,detections):
         class_name = detection["class_name"]
     
         #获取当前类别对应的颜色
-        color = colors.get(class_name, (255,255,255))
+        color = get_class_color(class_name)
         #绘制目标检测框
         cv2.rectangle(
             image,
@@ -35,17 +41,97 @@ def draw_detections(image_path,detections):
         #获取目标置信度
        
         confidence = detection["confidence"]
-        #生成显示标签
-        label=f"{class_name} {confidence:.2f}"
+        # 生成标签
+        label = f"{class_name} {confidence:.2f}"
 
-        #在检测框上方绘制文字
+        # 获取图片尺寸
+        img_height, img_width = image.shape[:2]
+
+        # 设置文字参数
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        font_scale = 0.6
+        thickness = 2
+        padding = 5
+
+        # 计算文字允许使用的最大宽度
+        max_text_width = max(0, img_width - 2 * padding)
+
+        # 计算原始标签尺寸
+        (text_width, text_height), baseline = cv2.getTextSize(
+            label, font, font_scale, thickness
+        )
+
+                # 处理过长的标签
+        if text_width > max_text_width:
+            suffix = "..."
+
+            suffix_width = cv2.getTextSize(
+                suffix, font, font_scale, thickness
+            )[0][0]
+
+            if suffix_width > max_text_width:
+                label = ""
+            else:
+                while label and cv2.getTextSize(
+                    label + suffix, font, font_scale, thickness
+                )[0][0] > max_text_width:
+                    label = label[:-1]
+
+                label += suffix
+        # 标签无法显示时，保留检测框
+        if not label:
+            continue
+
+        # 重新计算最终标签尺寸
+        (text_width, text_height), baseline = cv2.getTextSize(
+            label, font, font_scale, thickness
+        )
+
+        box_width = text_width + 2 * padding
+        box_height = text_height + baseline + 2 * padding
+
+        # 避免标签超出水平边界
+        label_x = max(0, min(x1, img_width - box_width))
+
+        # 优先在检测框上方显示
+        if y1 >= box_height:
+            label_y = y1 - box_height
+        else:
+            label_y = max(0, min(y1 + 2, img_height - box_height))
+
+        # 绘制标签背景
+        cv2.rectangle(
+            image,
+            (label_x, label_y),
+            (label_x + box_width, label_y + box_height),
+            color,
+            -1
+        )
+
+        # 根据背景亮度选择文字颜色
+        b, g, r = color
+
+        brightness = (
+            0.114 * b +
+            0.587 * g +
+            0.299 * r
+        )
+
+        if brightness >= 150:
+            text_color = (0, 0, 0)
+        else:
+            text_color = (255, 255, 255)
+
+        # 绘制标签文字
         cv2.putText(
             image,
             label,
-            (x1, max(y1 - 10,20)),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.6,
-            color,
-            2
+            (label_x + padding, label_y + padding + text_height),
+            font,
+            font_scale,
+            text_color,
+            thickness
         )
+        
+
     return image

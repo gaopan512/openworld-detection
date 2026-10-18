@@ -25,6 +25,7 @@ detections = detector.detect(
     classes=["person","car","bus","bicycle","dog"],
     confidence=0.25
 )
+print("实际推理设备：", detector.model.predictor.device)
 
 #输出检测结果数量
 print(f"检测到{len(detections)}个目标")
