@@ -1,4 +1,5 @@
 from pathlib import Path
+from numbers import Real
 from ultralytics import YOLOWorld
 
 
@@ -16,6 +17,7 @@ class OpenWorldDetector:
         self.device = device
         #加载训练模型（只执行一次）
         self.model=YOLOWorld(str(self.model_path))
+        self._classes = None
         print(f"模型加载成功，计算设备：{self.device}")
     def detect (self,image_path,classes,confidence=0.25):
         """检测图片并返回结构化结果。"""
@@ -35,10 +37,13 @@ class OpenWorldDetector:
             raise ValueError("检测类别必须是非空字符串")
 
         #检查置信度阈值
-        if not 0<=confidence<=1:
+        if isinstance(confidence, bool) or not isinstance(confidence, Real) or not 0<=confidence<=1:
             raise ValueError("置信度必须在0到1之间")
         #设置检测类别
-        self.model.set_classes(classes)
+        classes = tuple(classes)
+        if classes != self._classes:
+            self.model.set_classes(list(classes))
+            self._classes = classes
 
         #执行推理
         results=self.model.predict(

@@ -1,4 +1,5 @@
 from pathlib import Path
+import argparse
 import  sys
 #获取项目根目录
 PROJECT_ROOT=Path(__file__).resolve().parent.parent
@@ -11,10 +12,13 @@ from src.detector import OpenWorldDetector
 
 
 def main():
+    parser = argparse.ArgumentParser(description="验证真实检测器")
+    parser.add_argument("--device", choices=("cpu", "mps", "cuda"), default="cpu")
+    args = parser.parse_args()
     #初始化检测器
     detector = OpenWorldDetector(
         model_path=PROJECT_ROOT / "models/yolov8s-worldv2.pt",
-        device="mps"
+        device=args.device
     )
 
     #执行目标检测

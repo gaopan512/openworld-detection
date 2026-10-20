@@ -1,0 +1,12 @@
+# Direct dependencies observed in the local Mac environment on 2026-10-19.
+# This is not a complete transitive lock or proof of installation on every OS.
+ultralytics==8.4.177
+torch==2.14.1
+torchvision==0.29.1
+opencv-python==5.0.0.93
+PyQt6==6.11.0
+numpy==2.4.6
+Pillow==12.3.0
+clip @ git+https://github.com/ultralytics/CLIP.git@7ffa84b3bfa40c42ecc1c77147a855e69cb2dd40
+# Windows does not normally provide the IANA timezone database used by zoneinfo.
+tzdata; sys_platform == "win32"

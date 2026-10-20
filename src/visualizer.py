@@ -1,5 +1,6 @@
 import cv2
 import hashlib
+from src.image_io import read_image
 
 def get_class_color(class_name):
     """根据类别名称生成稳定的BGR颜色"""
@@ -16,10 +17,7 @@ def get_class_color(class_name):
 def draw_detections(image_path,detections):
     """在图片上绘制目标检测结果"""
 
-    image = cv2.imread(str(image_path))
-
-    if image is None:
-        raise ValueError(f"无法读取图片：{image_path}")
+    image = read_image(image_path)
     #遍历所有检测结果
     for detection in detections:
 
@@ -42,7 +40,7 @@ def draw_detections(image_path,detections):
        
         confidence = detection["confidence"]
         # 生成标签
-        label = f"{class_name} {confidence:.2f}"
+        label = f"{class_name} {confidence:.0%}"
 
         # 获取图片尺寸
         img_height, img_width = image.shape[:2]
@@ -61,23 +59,25 @@ def draw_detections(image_path,detections):
             label, font, font_scale, thickness
         )
 
-                # 处理过长的标签
+        # 仅缩短类别名称，始终为置信度预留宽度；二分查找避免逐字截断。
         if text_width > max_text_width:
-            suffix = "..."
+            score = f"{confidence:.0%}"
+            def fits(text):
+                return cv2.getTextSize(text, font, font_scale, thickness)[0][0] <= max_text_width
 
-            suffix_width = cv2.getTextSize(
-                suffix, font, font_scale, thickness
-            )[0][0]
-
-            if suffix_width > max_text_width:
+            if not fits(score):
                 label = ""
+            elif not fits(f"... {score}"):
+                label = score
             else:
-                while label and cv2.getTextSize(
-                    label + suffix, font, font_scale, thickness
-                )[0][0] > max_text_width:
-                    label = label[:-1]
-
-                label += suffix
+                low, high = 0, len(class_name)
+                while low < high:
+                    middle = (low + high + 1) // 2
+                    if fits(f"{class_name[:middle]}... {score}"):
+                        low = middle
+                    else:
+                        high = middle - 1
+                label = f"{class_name[:low]}... {score}"
         # 标签无法显示时，保留检测框
         if not label:
             continue
@@ -89,6 +89,8 @@ def draw_detections(image_path,detections):
 
         box_width = text_width + 2 * padding
         box_height = text_height + baseline + 2 * padding
+        if box_height > img_height:
+            continue
 
         # 避免标签超出水平边界
         label_x = max(0, min(x1, img_width - box_width))

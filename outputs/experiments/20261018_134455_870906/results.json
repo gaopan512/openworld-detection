@@ -1,0 +1,305 @@
+{
+  "run_id": "20261018_134455_870906",
+  "started_at": "2026-10-18T13:44:55.870906+08:00",
+  "status": "complete",
+  "image": "/Users/gaopan/Documents/openworld-detection/data/demo/bus.jpg",
+  "image_sha256": "c02019c4979c191eb739ddd944445ef408dad5679acab6fd520ef9d434bfbc63",
+  "model": "/Users/gaopan/Documents/openworld-detection/models/yolov8s-worldv2.pt",
+  "model_sha256": "9b2c17ab6124a913e9b3a5c170617920d91b0f01111a8479da69f00e2cf27792",
+  "requested_device": "cpu",
+  "python": "3.11.17",
+  "packages": {
+    "ultralytics": "8.4.177",
+    "torch": "2.14.1",
+    "opencv-python": "5.0.0.93"
+  },
+  "notes": "单张图片的定性对比；没有人工真值标注，不计算准确率或 mAP；不作性能基准。",
+  "cases": [
+    {
+      "name": "baseline",
+      "prompt": "person, bus",
+      "classes": [
+        "person",
+        "bus"
+      ],
+      "confidence_threshold": 0.25,
+      "actual_device": "cpu",
+      "result_image": "outputs/detections/experiments/20261018_134455_870906/baseline.png",
+      "detections": [
+        {
+          "class_name": "person",
+          "confidence": 0.9119118452072144,
+          "bbox": [
+            50.87610626220703,
+            398.2459411621094,
+            247.03680419921875,
+            903.3082275390625
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.9038086533546448,
+          "bbox": [
+            668.1492919921875,
+            386.4641418457031,
+            810.0,
+            878.1065673828125
+          ]
+        },
+        {
+          "class_name": "bus",
+          "confidence": 0.8891255855560303,
+          "bbox": [
+            2.7456893920898438,
+            231.18118286132812,
+            807.2867431640625,
+            744.5320434570312
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.8850208520889282,
+          "bbox": [
+            223.36233520507812,
+            406.3877258300781,
+            345.0717468261719,
+            860.7108154296875
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.6180400252342224,
+          "bbox": [
+            0.0,
+            483.8894958496094,
+            78.90647888183594,
+            885.7138061523438
+          ]
+        }
+      ]
+    },
+    {
+      "name": "threshold_050",
+      "prompt": "person, bus",
+      "classes": [
+        "person",
+        "bus"
+      ],
+      "confidence_threshold": 0.5,
+      "actual_device": "cpu",
+      "result_image": "outputs/detections/experiments/20261018_134455_870906/threshold_050.png",
+      "detections": [
+        {
+          "class_name": "person",
+          "confidence": 0.9119118452072144,
+          "bbox": [
+            50.87610626220703,
+            398.2459411621094,
+            247.03680419921875,
+            903.3082275390625
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.9038086533546448,
+          "bbox": [
+            668.1492919921875,
+            386.4641418457031,
+            810.0,
+            878.1065673828125
+          ]
+        },
+        {
+          "class_name": "bus",
+          "confidence": 0.8891255855560303,
+          "bbox": [
+            2.7456893920898438,
+            231.18118286132812,
+            807.2867431640625,
+            744.5320434570312
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.8850208520889282,
+          "bbox": [
+            223.36233520507812,
+            406.3877258300781,
+            345.0717468261719,
+            860.7108154296875
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.6180400252342224,
+          "bbox": [
+            0.0,
+            483.8894958496094,
+            78.90647888183594,
+            885.7138061523438
+          ]
+        }
+      ]
+    },
+    {
+      "name": "threshold_075",
+      "prompt": "person, bus",
+      "classes": [
+        "person",
+        "bus"
+      ],
+      "confidence_threshold": 0.75,
+      "actual_device": "cpu",
+      "result_image": "outputs/detections/experiments/20261018_134455_870906/threshold_075.png",
+      "detections": [
+        {
+          "class_name": "person",
+          "confidence": 0.9119118452072144,
+          "bbox": [
+            50.87610626220703,
+            398.2459411621094,
+            247.03680419921875,
+            903.3082275390625
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.9038086533546448,
+          "bbox": [
+            668.1492919921875,
+            386.4641418457031,
+            810.0,
+            878.1065673828125
+          ]
+        },
+        {
+          "class_name": "bus",
+          "confidence": 0.8891255855560303,
+          "bbox": [
+            2.7456893920898438,
+            231.18118286132812,
+            807.2867431640625,
+            744.5320434570312
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.8850208520889282,
+          "bbox": [
+            223.36233520507812,
+            406.3877258300781,
+            345.0717468261719,
+            860.7108154296875
+          ]
+        }
+      ]
+    },
+    {
+      "name": "prompt_pedestrian",
+      "prompt": "pedestrian, bus",
+      "classes": [
+        "pedestrian",
+        "bus"
+      ],
+      "confidence_threshold": 0.25,
+      "actual_device": "cpu",
+      "result_image": "outputs/detections/experiments/20261018_134455_870906/prompt_pedestrian.png",
+      "detections": [
+        {
+          "class_name": "bus",
+          "confidence": 0.8965615034103394,
+          "bbox": [
+            3.0398998260498047,
+            231.11148071289062,
+            807.200927734375,
+            745.9083862304688
+          ]
+        },
+        {
+          "class_name": "pedestrian",
+          "confidence": 0.5371779799461365,
+          "bbox": [
+            668.4656982421875,
+            389.0672912597656,
+            809.9859619140625,
+            878.1536865234375
+          ]
+        },
+        {
+          "class_name": "pedestrian",
+          "confidence": 0.3340471684932709,
+          "bbox": [
+            49.96976089477539,
+            398.3047180175781,
+            247.2645263671875,
+            904.7279052734375
+          ]
+        },
+        {
+          "class_name": "pedestrian",
+          "confidence": 0.2984602153301239,
+          "bbox": [
+            223.0376739501953,
+            407.08099365234375,
+            346.00115966796875,
+            860.5230712890625
+          ]
+        }
+      ]
+    },
+    {
+      "name": "prompt_coach",
+      "prompt": "person, coach",
+      "classes": [
+        "person",
+        "coach"
+      ],
+      "confidence_threshold": 0.25,
+      "actual_device": "cpu",
+      "result_image": "outputs/detections/experiments/20261018_134455_870906/prompt_coach.png",
+      "detections": [
+        {
+          "class_name": "person",
+          "confidence": 0.9143868684768677,
+          "bbox": [
+            50.253902435302734,
+            398.9391784667969,
+            247.75376892089844,
+            904.755126953125
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.901858389377594,
+          "bbox": [
+            667.6398315429688,
+            388.4500427246094,
+            810.0,
+            879.7796020507812
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.8998112082481384,
+          "bbox": [
+            223.744384765625,
+            406.8131408691406,
+            346.215576171875,
+            860.3456420898438
+          ]
+        },
+        {
+          "class_name": "person",
+          "confidence": 0.6292229890823364,
+          "bbox": [
+            0.0,
+            483.1756286621094,
+            79.4386978149414,
+            888.3595581054688
+          ]
+        }
+      ]
+    }
+  ],
+  "finished_at": "2026-10-18T13:45:03.074088+08:00"
+}

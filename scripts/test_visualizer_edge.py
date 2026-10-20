@@ -1,11 +1,11 @@
 from pathlib import Path
 import sys
-import cv2
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.visualizer import draw_detections
+from src.image_io import write_image
 
 
 # 测试图片
@@ -51,9 +51,6 @@ for name, detections in test_cases.items():
 
     output_path = output_dir / f"{name}.jpg"
 
-    success = cv2.imwrite(str(output_path), image)
-
-    if not success:
-        raise RuntimeError(f"图片保存失败：{output_path}")
+    write_image(output_path, image)
 
     print(f"{name}: 测试图片已保存")
