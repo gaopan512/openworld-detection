@@ -30,7 +30,9 @@ python -B main.py
 python -B -m src.gui.main_window
 ```
 
-本地模型需位于 `models/yolov8s-worldv2.pt`。权重文件未纳入 Git，首次检测时加载，之后复用；相同提示词下只改阈值不会重复设置类别。GUI 默认按 MPS、CUDA、CPU 顺序选择可用设备，也可手动指定。自动选择加速设备后，若模型加载或推理失败，会显示原因并用 CPU 重试一次；CPU 再次失败则报告两次错误。手动指定设备时保持报错，不回退。结果中显示最终设备，回退原因保留在状态栏和参数提示中。
+默认模型位于 `models/yolov8s-worldv2.pt`。权重文件未纳入 Git；首次检测时在后台自动下载缺失或校验不通过的默认 YOLO 和 CLIP 权重，并显示进度，之后复用本地文件与检测器。相同提示词下只改阈值不会重复设置类别。其他本地 `.pt` 模型仍可在下拉框中选择，由用户自行准备，不套用默认权重校验值。
+
+GUI 默认按 MPS、CUDA、CPU 顺序选择可用设备，也可手动指定。自动选择加速设备后，若模型加载或推理失败，会显示原因并用 CPU 重试一次；CPU 再次失败则报告两次错误。下载失败直接报告下载错误，不触发设备回退。手动指定设备时保持报错，不回退。结果中显示最终设备，回退原因保留在状态栏和参数提示中。
 
 ## 新环境安装（Mac、Windows、Linux）
 
@@ -42,11 +44,29 @@ conda activate openworld-detection
 python -B main.py
 ```
 
-已有独立 Python 3.11 环境时，也可执行 `python -m pip install -r requirements.txt`。安装 CLIP 的固定 Git 提交需要 Git 和网络；首次有效检测还可能下载 CLIP 文本编码权重。需另外准备上述 YOLO-World 模型文件，程序不会把缺失的本地模型当作已安装成功。
+已有独立 Python 3.11 环境时，也可执行 `python -m pip install -r requirements.txt`。安装 CLIP 的固定 Git 提交需要 Git 和网络。默认权重由程序在首次检测时获取，也可以先在项目根目录执行：
+
+```bash
+python -B -m src.model_assets
+python -B main.py
+```
+
+两份权重合计约 363 MiB；具体下载、缓存和离线准备规则见下文。
 
 `requirements.txt` 记录当前 Mac 中直接依赖的已安装版本与 CLIP 提交，`environment.yml` 提供环境创建入口；这不是所有间接依赖的完整锁定，也尚未在全新环境及 Windows/Linux 实机安装验证。Windows 的时区数据库通过 `tzdata` 补齐。CUDA 需要兼容的显卡、驱动及支持 CUDA 的 PyTorch；遇到平台无对应 wheel 或驱动不兼容时，应按目标平台调整 PyTorch 安装组合，不能以当前 Mac 的版本记录代替实机验证。Linux 桌面还需可用的显示服务及 Qt 系统依赖；无显示环境仅运行自动测试和无窗口验证。
 
 Mac 可选择 MPS 或 CPU，Windows/Linux 可选择 CUDA 或 CPU。图片读写通过字节编解码兼容中文路径；EXIF 方向在原图预览与检测绘图中保持一致。
+
+## 默认权重下载与离线准备
+
+- YOLO：固定使用 [Ultralytics 官方 v8.3.0 Release](https://github.com/ultralytics/assets/releases/download/v8.3.0/yolov8s-worldv2.pt)，25,923,032 字节，保存到 `models/yolov8s-worldv2.pt`。
+- CLIP：使用固定 CLIP 依赖中的 [ViT-B/32 官方地址](https://openaipublic.azureedge.net/clip/models/40d365715913c9da98579312b702a82c18be219cc2a73407c4526f58eba950af/ViT-B-32.pt)，353,976,522 字节，保存到当前 Ultralytics 的 `WEIGHTS_DIR/clip/ViT-B-32.pt`。预下载命令会打印两份文件的绝对位置；CLIP 缓存通常位于项目目录外，与现有 Ultralytics 行为一致。
+- 两份文件均检查固定大小和 SHA-256；已校验的本地文件不联网。版本与校验值记录在 `src/model_assets.py`，不会追随 latest 自动升级。
+- 每份文件最多尝试 3 次，连接/读取等待超时为 20 秒，失败后间隔 1、2 秒重试。每次从头下载；临时文件与目标在同一目录，只有完整校验通过后才原子替换目标。普通失败会清理临时文件，保留原有目标文件。强制结束进程可能遗留隐藏的 `.part` 文件，但不会作为模型加载。
+- 网络失败后可修复网络，再点击检测或重跑预下载命令。也可按错误中给出的官方地址和目标位置手动放置文件，再运行命令校验。不会绕过校验加载损坏的默认权重。
+- 离线使用前，应在联网环境完成依赖安装和两份权重准备；只复制 YOLO 权重不足以支持自由提示词检测。自定义模型的额外依赖由其加载逻辑处理。
+
+模型来源与使用条款见 [Ultralytics YOLO-World 文档](https://docs.ultralytics.com/models/yolo-world/) 和 [Ultralytics 许可说明](https://www.ultralytics.com/license)。此项目直接从上游下载权重，不重新托管，也不改变上游许可。
 
 ## 操作步骤
 
@@ -58,7 +78,7 @@ Mac 可选择 MPS 或 CPU，Windows/Linux 可选择 CUDA 或 CPU。图片读写�
 
 标签边框颜色与检测框一致。点击明细表中的一行，可高亮对应目标框。类别标签可高亮同类目标；再次点击同一标签取消高亮，高亮只影响预览，不写入保存图片。更改输入后，旧结果及其原参数仍可查看与保存，标签显示“待检测”；开始新任务后旧结果清空，失败时清除旧参数说明。自动检测是一次次完整推理，不是对旧结果单纯筛选。打开图片或保存结果期间暂停待执行的自动检测，对话框关闭后恢复；保存使用进入对话框之前的结果快照。
 
-长类别标签优先缩短类别名并保留置信度；图片过窄或过矮而无法放下标签时保留检测框。检测耗时包含模型加载、文本编码、推理及可能发生的 CPU 重试，不包含绘图和保存；不作为纯推理速度基准。
+长类别标签优先缩短类别名并保留置信度；图片过窄或过矮而无法放下标签时保留检测框。检测耗时包含权重校验与可能发生的下载、模型加载、文本编码、推理及可能发生的 CPU 重试，不包含绘图和保存；不作为纯推理速度基准。
 
 首次推理可能需要额外初始化时间。未检测到目标时仍可保存原图对应的结果；推理失败会弹出错误信息，结束后可再次检测。
 
@@ -89,6 +109,7 @@ main.py                              # 项目启动入口
 src/class_parser.py                  # 英文提示词解析
 src/detector.py                      # 模型加载与目标检测
 src/device.py                        # 跨平台设备选择
+src/model_assets.py                  # 默认 YOLO/CLIP 权重下载与校验
 src/image_io.py                      # 支持中文路径的图片读写
 src/visualizer.py                    # 检测框和标签绘制
 src/gui/main_window.py               # 窗口、预览、输入与保存

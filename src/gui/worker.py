@@ -4,6 +4,7 @@ from pathlib import Path
 from PyQt6.QtCore import QThread, pyqtSignal
 from PyQt6.QtGui import QImage
 from src.device import resolve_device
+from src.model_assets import prepare_default_assets
 
 
 class DetectionWorker(QThread):
@@ -45,8 +46,13 @@ class DetectionWorker(QThread):
 
             device = resolve_device(self.device)
             fallback_reason = None
-            # 耗时包含加载、文本编码、推理及 CPU 重试，不包含绘图。
+            # 耗时包含权重准备、加载、文本编码、推理及 CPU 重试，不包含绘图。
             started = time.perf_counter()
+            key = (str(self.model_path), device)
+            if self.detector is None or self._detector_key != key:
+                # Network failures must not be mistaken for accelerator failures.
+                prepare_default_assets(self.model_path, self.status_changed.emit)
+            self.status_changed.emit("正在加载模型并检测……")
             try:
                 detections = self._detect(device)
             except Exception as error:

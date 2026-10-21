@@ -33,6 +33,9 @@ class TestGUI(unittest.TestCase):
         cls.app = QApplication.instance() or QApplication([])
 
     def setUp(self):
+        assets = patch("src.gui.worker.prepare_default_assets")
+        self.prepare_assets = assets.start()
+        self.addCleanup(assets.stop)
         self.temporary = TemporaryDirectory(prefix="openworld-gui-")
         self.directory = Path(self.temporary.name)
         self.image = QImage(810, 1080, QImage.Format.Format_RGB888)
@@ -488,10 +491,36 @@ class TestGUI(unittest.TestCase):
             worker.run()
         self.assertEqual([call.args for call in detect.call_args_list], [("cuda",), ("cpu",)])
         self.assertEqual(len(failed), 0)
-        self.assertEqual(len(status), 1)
+        self.assertTrue(any("CPU 重试" in message[0] for message in status))
         self.assertEqual(ready[0][3]["device"], "cpu")
         self.assertIn("GPU unavailable", ready[0][3]["fallback_reason"])
         self.assertIn("回退 CPU", ready[0][1])
+
+    def test_download_failure_does_not_load_model_or_retry_cpu(self):
+        worker = self.window.worker
+        worker.failed.disconnect(self.window.show_error)
+        worker.device = "auto"
+        self.prepare_assets.side_effect = RuntimeError("download unavailable")
+        failed = QSignalSpy(worker.failed)
+        with patch("src.gui.worker.resolve_device", return_value="cuda"), patch.object(worker, "_detect") as detect:
+            worker.run()
+        detect.assert_not_called()
+        self.assertEqual(len(failed), 1)
+        self.assertIn("download unavailable", failed[0][0])
+
+    def test_default_model_is_available_even_when_only_custom_weights_exist(self):
+        custom = PROJECT_ROOT / "models/custom.pt"
+        with patch("src.gui.main_window.Path.glob", return_value=[custom]):
+            window = MainWindow()
+        try:
+            self.assertEqual(window.model_combo.count(), 2)
+            self.assertEqual(window.model_combo.currentData(),
+                             str(PROJECT_ROOT / "models/yolov8s-worldv2.pt"))
+            self.assertEqual(window.model_combo.itemData(1), str(custom))
+            self.assertIn("363 MiB", window.model_combo.toolTip())
+        finally:
+            window.close()
+            window.deleteLater()
 
     def test_manual_device_never_falls_back_and_double_failure_stops(self):
         worker = self.window.worker

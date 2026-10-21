@@ -333,13 +333,16 @@ class MainWindow(QMainWindow):
         conf_row.addWidget(self.confidence_input)
 
         self.model_combo = QComboBox()
+        default_model = PROJECT_ROOT / "models/yolov8s-worldv2.pt"
+        self.model_combo.addItem(default_model.stem, str(default_model))
+        self.model_combo.setToolTip(
+            "默认模型首次检测时自动下载并校验权重（含 CLIP，合计约 363 MiB）；"
+            "也可先运行 python -B -m src.model_assets。其他模型需自行准备。"
+        )
         models = sorted((PROJECT_ROOT / "models").glob("*.pt"))
         for path in models:
-            self.model_combo.addItem(path.stem, str(path))
-        if not models:
-            self.model_combo.addItem(
-                "yolov8s-worldv2", str(PROJECT_ROOT / "models/yolov8s-worldv2.pt")
-            )
+            if path != default_model:
+                self.model_combo.addItem(path.stem, str(path))
 
         self.device_combo = QComboBox()
         self.device_combo.addItem("自动（MPS / CUDA / CPU）", "auto")
