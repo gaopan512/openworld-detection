@@ -26,3 +26,9 @@ data/public/
 outputs/detections/
 outputs/logs/
 outputs/verification/
+
+# Local development and validation files
+/tests/
+/scripts/
+/docs/development_log.md
+/outputs/experiments/

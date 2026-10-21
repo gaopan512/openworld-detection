@@ -1,5 +1,4 @@
-# Direct dependencies observed in the local Mac environment on 2026-10-19.
-# This is not a complete transitive lock or proof of installation on every OS.
+# Application dependencies
 ultralytics==8.4.177
 torch==2.14.1
 torchvision==0.29.1
