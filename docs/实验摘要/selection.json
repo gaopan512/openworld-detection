@@ -1,0 +1,821 @@
+{
+  "selection_seed": 20261022,
+  "selected_on": "2026-10-22T15:50:39.600094+08:00",
+  "annotation_source": "https://s3.amazonaws.com/images.cocodataset.org/annotations/annotations_trainval2017.zip",
+  "annotation_sha256": "e8c7f7908f1d7278341fae127d0da654f102f11bd7b21d8aeefa635b8c810b6f",
+  "selection_rule": "4 per group; unique; license id 4 (CC BY 2.0); anchor present; >=2 non-crowd group objects; sorted candidates; seeded sample",
+  "images": [
+    {
+      "license": 4,
+      "file_name": "000000361142.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000361142.jpg",
+      "height": 640,
+      "width": 463,
+      "date_captured": "2013-11-16 12:00:44",
+      "flickr_url": "http://farm3.staticflickr.com/2046/2274699389_b912eafb26_z.jpg",
+      "id": 361142,
+      "group": "traffic",
+      "vocabulary": [
+        "person",
+        "bicycle",
+        "car",
+        "motorcycle",
+        "bus",
+        "truck",
+        "traffic light",
+        "fire hydrant",
+        "stop sign"
+      ],
+      "negative_vocabulary": [
+        "fork",
+        "fire hydrant",
+        "airplane"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000361142.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "cad7edbaebad81e4a799a39d8be9720c76c79ea2a675cbfd1b16612a837bf28f"
+    },
+    {
+      "license": 4,
+      "file_name": "000000301376.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000301376.jpg",
+      "height": 500,
+      "width": 333,
+      "date_captured": "2013-11-14 22:36:36",
+      "flickr_url": "http://farm4.staticflickr.com/3059/2718408461_4af7105d49_z.jpg",
+      "id": 301376,
+      "group": "traffic",
+      "vocabulary": [
+        "person",
+        "bicycle",
+        "car",
+        "motorcycle",
+        "bus",
+        "truck",
+        "traffic light",
+        "fire hydrant",
+        "stop sign"
+      ],
+      "negative_vocabulary": [
+        "tv",
+        "cake",
+        "bed"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000301376.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "57ead4a94a6df986a161c014c0719b6c37b52ea2aa2246c297ec44db06eb7a2e"
+    },
+    {
+      "license": 4,
+      "file_name": "000000196759.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000196759.jpg",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-17 17:39:58",
+      "flickr_url": "http://farm8.staticflickr.com/7324/9356649003_5cf8fb57b3_z.jpg",
+      "id": 196759,
+      "group": "traffic",
+      "vocabulary": [
+        "person",
+        "bicycle",
+        "car",
+        "motorcycle",
+        "bus",
+        "truck",
+        "traffic light",
+        "fire hydrant",
+        "stop sign"
+      ],
+      "negative_vocabulary": [
+        "cup",
+        "cow",
+        "kite"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000196759.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "91e7ce017c2bb00c5fb22919f12749823d371b1c4664cdaccc0a2854bc992710"
+    },
+    {
+      "license": 4,
+      "file_name": "000000076547.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000076547.jpg",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-17 09:53:38",
+      "flickr_url": "http://farm9.staticflickr.com/8557/8771723390_13dc9d18fa_z.jpg",
+      "id": 76547,
+      "group": "traffic",
+      "vocabulary": [
+        "person",
+        "bicycle",
+        "car",
+        "motorcycle",
+        "bus",
+        "truck",
+        "traffic light",
+        "fire hydrant",
+        "stop sign"
+      ],
+      "negative_vocabulary": [
+        "bus",
+        "donut",
+        "clock"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000076547.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "f4f730a011b99aaa7b9ee851b6ba4c77fe2e3c4c81d12d58b7221d0f1b199c01"
+    },
+    {
+      "license": 4,
+      "file_name": "000000564133.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000564133.jpg",
+      "height": 424,
+      "width": 640,
+      "date_captured": "2013-11-18 05:08:50",
+      "flickr_url": "http://farm9.staticflickr.com/8348/8197453784_a3be1b210e_z.jpg",
+      "id": 564133,
+      "group": "animals",
+      "vocabulary": [
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe"
+      ],
+      "negative_vocabulary": [
+        "airplane",
+        "umbrella",
+        "bowl"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000564133.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "e12af9d5e9ab35d17cf432951532ca019cdec750c85c902f891e05a0b7a50d06"
+    },
+    {
+      "license": 4,
+      "file_name": "000000129054.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000129054.jpg",
+      "height": 375,
+      "width": 500,
+      "date_captured": "2013-11-18 21:50:50",
+      "flickr_url": "http://farm1.staticflickr.com/177/411065926_2483e52299_z.jpg",
+      "id": 129054,
+      "group": "animals",
+      "vocabulary": [
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe"
+      ],
+      "negative_vocabulary": [
+        "oven",
+        "car",
+        "truck"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000129054.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "b499404f1b12c09135740acf268306f73ecc23c4f0259c5b03ae5c06e45a2d3d"
+    },
+    {
+      "license": 4,
+      "file_name": "000000236784.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000236784.jpg",
+      "height": 400,
+      "width": 500,
+      "date_captured": "2013-11-18 13:17:08",
+      "flickr_url": "http://farm3.staticflickr.com/2380/2222474135_825753ebbd_z.jpg",
+      "id": 236784,
+      "group": "animals",
+      "vocabulary": [
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe"
+      ],
+      "negative_vocabulary": [
+        "orange",
+        "sports ball",
+        "bed"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000236784.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "cdd94432188f912462ec36a51f6e17efe537e472ef427654d37f26cf76bea4e7"
+    },
+    {
+      "license": 4,
+      "file_name": "000000492282.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000492282.jpg",
+      "height": 640,
+      "width": 480,
+      "date_captured": "2013-11-17 04:07:52",
+      "flickr_url": "http://farm4.staticflickr.com/3086/2567250393_eb51096d65_z.jpg",
+      "id": 492282,
+      "group": "animals",
+      "vocabulary": [
+        "bird",
+        "cat",
+        "dog",
+        "horse",
+        "sheep",
+        "cow",
+        "elephant",
+        "bear",
+        "zebra",
+        "giraffe"
+      ],
+      "negative_vocabulary": [
+        "bed",
+        "car",
+        "snowboard"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000492282.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "9d3f32bb93adf432173ff294315d7632e8a9947b40650d0e8480e0c95216ab8c"
+    },
+    {
+      "license": 4,
+      "file_name": "000000039956.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000039956.jpg",
+      "height": 427,
+      "width": 640,
+      "date_captured": "2013-11-20 21:40:01",
+      "flickr_url": "http://farm3.staticflickr.com/2692/4164666887_536163f782_z.jpg",
+      "id": 39956,
+      "group": "indoor",
+      "vocabulary": [
+        "chair",
+        "couch",
+        "potted plant",
+        "bed",
+        "dining table",
+        "tv"
+      ],
+      "negative_vocabulary": [
+        "tennis racket",
+        "motorcycle",
+        "bottle"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000039956.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "76e73337d2385cf701750bc38a42f0205153af090244e66fb7a261052cb05217"
+    },
+    {
+      "license": 4,
+      "file_name": "000000074733.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000074733.jpg",
+      "height": 612,
+      "width": 612,
+      "date_captured": "2013-11-21 01:21:16",
+      "flickr_url": "http://farm6.staticflickr.com/5461/9330037796_1700b955f3_z.jpg",
+      "id": 74733,
+      "group": "indoor",
+      "vocabulary": [
+        "chair",
+        "couch",
+        "potted plant",
+        "bed",
+        "dining table",
+        "tv"
+      ],
+      "negative_vocabulary": [
+        "clock",
+        "snowboard",
+        "skateboard"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000074733.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "d99c93fb6d22a5d51bbb6e09ca5f10c11bdcf90a711abf6cc83188df52cc456a"
+    },
+    {
+      "license": 4,
+      "file_name": "000000554291.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000554291.jpg",
+      "height": 428,
+      "width": 640,
+      "date_captured": "2013-11-15 14:47:07",
+      "flickr_url": "http://farm1.staticflickr.com/103/256248429_ebcfe37830_z.jpg",
+      "id": 554291,
+      "group": "indoor",
+      "vocabulary": [
+        "chair",
+        "couch",
+        "potted plant",
+        "bed",
+        "dining table",
+        "tv"
+      ],
+      "negative_vocabulary": [
+        "boat",
+        "spoon",
+        "surfboard"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000554291.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "87cfe902780e460e352a5de8b0ced6a8372dc7317aba136279edf3ff4e0527dc"
+    },
+    {
+      "license": 4,
+      "file_name": "000000228144.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000228144.jpg",
+      "height": 426,
+      "width": 640,
+      "date_captured": "2013-11-21 03:26:21",
+      "flickr_url": "http://farm4.staticflickr.com/3800/9678757658_774e298ba2_z.jpg",
+      "id": 228144,
+      "group": "indoor",
+      "vocabulary": [
+        "chair",
+        "couch",
+        "potted plant",
+        "bed",
+        "dining table",
+        "tv"
+      ],
+      "negative_vocabulary": [
+        "baseball glove",
+        "bus",
+        "potted plant"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000228144.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "478ca24cca4904cb881c8f39444273ba3105782e726d8527d36d741cf564c4c5"
+    },
+    {
+      "license": 4,
+      "file_name": "000000547144.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000547144.jpg",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-22 18:39:38",
+      "flickr_url": "http://farm3.staticflickr.com/2408/2527139847_ee51ca4ce3_z.jpg",
+      "id": 547144,
+      "group": "electronics",
+      "vocabulary": [
+        "laptop",
+        "mouse",
+        "keyboard",
+        "cell phone",
+        "book",
+        "clock"
+      ],
+      "negative_vocabulary": [
+        "pizza",
+        "book",
+        "hot dog"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000547144.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "3c06cc2d2c83a6ec598b8c89e04d58bb31fe3f9dcc85fdef9ceacb4c2b9bdba4"
+    },
+    {
+      "license": 4,
+      "file_name": "000000232088.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000232088.jpg",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-21 22:48:22",
+      "flickr_url": "http://farm7.staticflickr.com/6192/6149027966_1904e41f77_z.jpg",
+      "id": 232088,
+      "group": "electronics",
+      "vocabulary": [
+        "laptop",
+        "mouse",
+        "keyboard",
+        "cell phone",
+        "book",
+        "clock"
+      ],
+      "negative_vocabulary": [
+        "toilet",
+        "cup",
+        "airplane"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000232088.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "63400110213661d864e373199072bed07218f942294463c7b613754d9252bb8a"
+    },
+    {
+      "license": 4,
+      "file_name": "000000068765.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000068765.jpg",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-22 00:53:41",
+      "flickr_url": "http://farm3.staticflickr.com/2131/1501351467_a73502f414_z.jpg",
+      "id": 68765,
+      "group": "electronics",
+      "vocabulary": [
+        "laptop",
+        "mouse",
+        "keyboard",
+        "cell phone",
+        "book",
+        "clock"
+      ],
+      "negative_vocabulary": [
+        "book",
+        "bicycle",
+        "potted plant"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000068765.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "0c7e7e080936a8120fccf67e21f6142ed8a452e1e9411454b0900923dac247f0"
+    },
+    {
+      "license": 4,
+      "file_name": "000000078170.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000078170.jpg",
+      "height": 640,
+      "width": 640,
+      "date_captured": "2013-11-24 05:18:52",
+      "flickr_url": "http://farm9.staticflickr.com/8466/8108218074_bacf160a3c_z.jpg",
+      "id": 78170,
+      "group": "electronics",
+      "vocabulary": [
+        "laptop",
+        "mouse",
+        "keyboard",
+        "cell phone",
+        "book",
+        "clock"
+      ],
+      "negative_vocabulary": [
+        "fire hydrant",
+        "wine glass",
+        "tennis racket"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000078170.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "e9ccccb034030771eafc383d2872bce55e7ff395313b610ffc1215eeb72912a3"
+    },
+    {
+      "license": 4,
+      "file_name": "000000429598.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000429598.jpg",
+      "height": 480,
+      "width": 640,
+      "date_captured": "2013-11-14 16:19:13",
+      "flickr_url": "http://farm8.staticflickr.com/7162/6617685485_877d5cee57_z.jpg",
+      "id": 429598,
+      "group": "kitchen",
+      "vocabulary": [
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator"
+      ],
+      "negative_vocabulary": [
+        "bed",
+        "parking meter",
+        "baseball glove"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000429598.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "cf692837b22f590cc75ed7eb9bcabd26772c71e924a35506df081b0956755bb2"
+    },
+    {
+      "license": 4,
+      "file_name": "000000577584.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000577584.jpg",
+      "height": 640,
+      "width": 418,
+      "date_captured": "2013-11-24 05:53:01",
+      "flickr_url": "http://farm7.staticflickr.com/6016/6206725101_edc356109b_z.jpg",
+      "id": 577584,
+      "group": "kitchen",
+      "vocabulary": [
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator"
+      ],
+      "negative_vocabulary": [
+        "vase",
+        "pizza",
+        "airplane"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000577584.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "9e47eaaf563d2ae9bfebcea80f2616ceb7eaf6c99a0390f0274cfb0068686d77"
+    },
+    {
+      "license": 4,
+      "file_name": "000000066231.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000066231.jpg",
+      "height": 427,
+      "width": 640,
+      "date_captured": "2013-11-14 19:34:16",
+      "flickr_url": "http://farm9.staticflickr.com/8352/8375313873_80051bc3e2_z.jpg",
+      "id": 66231,
+      "group": "kitchen",
+      "vocabulary": [
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator"
+      ],
+      "negative_vocabulary": [
+        "toilet",
+        "bear",
+        "giraffe"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000066231.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "9f4fe7d747ae0d163c865e6478afc0a39822817b650b11094bbcb4fe37b46680"
+    },
+    {
+      "license": 4,
+      "file_name": "000000514914.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000514914.jpg",
+      "height": 366,
+      "width": 640,
+      "date_captured": "2013-11-15 01:42:52",
+      "flickr_url": "http://farm6.staticflickr.com/5448/9466657460_e12ffd8f35_z.jpg",
+      "id": 514914,
+      "group": "kitchen",
+      "vocabulary": [
+        "bottle",
+        "wine glass",
+        "cup",
+        "fork",
+        "knife",
+        "spoon",
+        "bowl",
+        "microwave",
+        "oven",
+        "toaster",
+        "sink",
+        "refrigerator"
+      ],
+      "negative_vocabulary": [
+        "banana",
+        "cat",
+        "hot dog"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000514914.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "1e0fee35a7278e372e85d64fedeb90806cc99b951e251571d2052ded3cd757fa"
+    },
+    {
+      "license": 4,
+      "file_name": "000000416885.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000416885.jpg",
+      "height": 375,
+      "width": 500,
+      "date_captured": "2013-11-20 12:07:45",
+      "flickr_url": "http://farm4.staticflickr.com/3040/2791132570_faa5072ab9_z.jpg",
+      "id": 416885,
+      "group": "food",
+      "vocabulary": [
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake"
+      ],
+      "negative_vocabulary": [
+        "baseball glove",
+        "motorcycle",
+        "teddy bear"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000416885.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "f9d0c193c7049951383bef4d39cf979223080e871e257d44e261c24899855ec1"
+    },
+    {
+      "license": 4,
+      "file_name": "000000406570.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000406570.jpg",
+      "height": 640,
+      "width": 427,
+      "date_captured": "2013-11-19 18:37:45",
+      "flickr_url": "http://farm3.staticflickr.com/2625/3796453122_e3fa536540_z.jpg",
+      "id": 406570,
+      "group": "food",
+      "vocabulary": [
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake"
+      ],
+      "negative_vocabulary": [
+        "backpack",
+        "bus",
+        "baseball bat"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000406570.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "2790f0224bf5f6315f6480b3c5dc46130dfeeffb1a12bb58b6d686c1cd616065"
+    },
+    {
+      "license": 4,
+      "file_name": "000000577539.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000577539.jpg",
+      "height": 334,
+      "width": 500,
+      "date_captured": "2013-11-19 21:39:18",
+      "flickr_url": "http://farm4.staticflickr.com/3494/3850219428_10c4b01c88_z.jpg",
+      "id": 577539,
+      "group": "food",
+      "vocabulary": [
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake"
+      ],
+      "negative_vocabulary": [
+        "keyboard",
+        "vase",
+        "wine glass"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000577539.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "e47b41db1c064f91364db5b38fad5c49988854a7197225fb4fde903640ee5e72"
+    },
+    {
+      "license": 4,
+      "file_name": "000000350148.jpg",
+      "coco_url": "http://images.cocodataset.org/val2017/000000350148.jpg",
+      "height": 640,
+      "width": 480,
+      "date_captured": "2013-11-20 01:38:20",
+      "flickr_url": "http://farm4.staticflickr.com/3434/3275441569_eee9434daf_z.jpg",
+      "id": 350148,
+      "group": "food",
+      "vocabulary": [
+        "banana",
+        "apple",
+        "sandwich",
+        "orange",
+        "broccoli",
+        "carrot",
+        "hot dog",
+        "pizza",
+        "donut",
+        "cake"
+      ],
+      "negative_vocabulary": [
+        "bear",
+        "baseball glove",
+        "tv"
+      ],
+      "download_url": "https://s3.amazonaws.com/images.cocodataset.org/val2017/000000350148.jpg",
+      "license_details": {
+        "url": "http://creativecommons.org/licenses/by/2.0/",
+        "id": 4,
+        "name": "Attribution License"
+      },
+      "sha256": "887b3caf92b74588d54005ebdf8dfbf925af064c64fb0c6ca64549b121684b46"
+    }
+  ]
+}

@@ -2,6 +2,14 @@
 
 使用 YOLO-World v2 与 PyQt6，根据自由输入的英文类别短语检测单张图片中的目标，并展示、保存带检测框的结果。
 
+课程项目 V1 于 2026-10-22 完成结项整理，后续进入维护阶段。功能实现、实验结果及验证边界见[结项说明](docs/项目结项说明.md)。
+
+- [课程报告（Markdown）](docs/开放词汇目标检测系统课程报告.md)
+- [课程报告（Word）](docs/开放词汇目标检测系统课程报告.docx)
+- [实验统计汇总](docs/实验摘要/统计汇总.json) · [图片来源与许可](docs/实验摘要/图片来源与许可.csv)
+
+![系统界面](docs/课程报告配图/gui.png)
+
 ## 功能
 
 - 打开或拖入 JPG、JPEG、PNG、BMP 图片。
@@ -13,7 +21,7 @@
 - 可选输入停顿后自动检测，默认关闭。
 - 保存完整分辨率的 PNG、JPEG 结果图片。
 
-当前处理单张图片，不包含视频或摄像头输入。检测效果取决于图片、提示词和置信度阈值，允许输入某个类别不代表模型一定能够识别。
+系统以单张图片为输入，通过英文类别短语和置信度阈值控制检测目标与结果筛选。
 
 ## 安装与启动
 
@@ -55,7 +63,7 @@ python -B -m src.model_assets
 
 默认权重采用固定版本，并检查文件大小和 SHA-256。下载失败最多尝试 3 次，成功校验后才替换目标文件。若获取失败，可检查网络后重新检测或重跑预下载命令，也可按错误提示中的官方地址与保存位置手动准备文件。
 
-离线使用前，请完成依赖安装及两份权重的准备；只准备 YOLO 权重不足以支持自由提示词检测。权重不随 Git 仓库分发。
+离线使用前，安装依赖并准备 YOLO 与 CLIP 两份权重。权重通过上述官方地址下载。
 
 其他兼容的本地 `.pt` 模型可放入 `models/`，重启程序后在下拉框中选择；其权重与额外依赖需自行准备。
 
@@ -67,7 +75,7 @@ python -B -m src.model_assets
 4. 点击“开始检测”，等待结果显示。
 5. 点击“保存结果”，选择位置、文件名和 PNG/JPEG 格式。
 
-检测期间需等待任务结束后再更换图片、修改参数或关闭窗口。首次检测包含权重准备与模型初始化，可能需要较长时间。
+检测期间，界面锁定图片切换、参数修改与窗口关闭，任务结束后恢复。首次检测会准备权重并初始化模型，状态栏显示执行进度。
 
 ### 提示词
 
@@ -110,8 +118,23 @@ src/gui/                     # 图形界面与后台线程
 requirements.txt             # Python 依赖
 environment.yml              # Conda 环境配置
 data/demo/bus.jpg            # 示例图片
+models/                      # 本地模型权重
+docs/                        # 课程报告、配图、实验摘要与结项说明
+outputs/detections/          # 界面保存的检测结果
 ```
+
+`models/` 和 `outputs/detections/` 在下载权重、保存结果时按需创建。公开仓库提供应用源码、示例图片、依赖配置与报告材料。
+
+开发工作区另保留 `scripts/`、`tests/`、开发记录及 `outputs/experiments/course_coco24_20261022/` 完整实验材料，通过 `.gitignore` 排除。仅完整开发工作区可使用 `python -B -m unittest discover -s tests -v`，GitHub 克隆不包含这些测试和工具。公开实验摘要记录本次实验的固定样本、协议和统计结果。
+
+## 验证与适用范围
+
+2026-10-22 在现有 macOS arm64 / Python 3.11 环境中重跑 62 项本地回归测试，全部通过；真实 CPU → Qt 后台线程 → 结果接收 → PNG 保存验证通过，示例图使用 `person, bus` 检出 5 个目标。
+
+课程实验使用 COCO val2017 的固定 24 张图片，完成 120 组检测和 30 次预热后耗时测量；默认阈值下 Precision 为 55.46%、Recall 为 50.77%、F1 为 53.01%。这些是选定小样本、预设词汇和固定匹配规则下的结果，不代表 COCO 全集 mAP 或未见类别泛化能力。
+
+Windows/Linux、MPS/CUDA 和全新环境安装尚未完成实机验证。当前交付形式为 Python 源码项目，需要自行配置环境；首次权重下载需要网络。
 
 ## 模型来源
 
-模型使用说明见 [Ultralytics YOLO-World 文档](https://docs.ultralytics.com/models/yolo-world/)，使用条款见 [Ultralytics 许可说明](https://www.ultralytics.com/license)。本项目从上游获取权重，不改变上游许可。
+模型使用说明见 [Ultralytics YOLO-World 文档](https://docs.ultralytics.com/models/yolo-world/)，使用条款见 [Ultralytics 许可说明](https://www.ultralytics.com/license)。本项目使用上游发布的预训练权重。

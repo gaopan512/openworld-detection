@@ -19,12 +19,8 @@ models/*.pt
 models/.*.part
 *.onnx
 
-# Large datasets
-data/public/
-
 # Generated outputs
 outputs/detections/
-outputs/logs/
 outputs/verification/
 
 # Local development and validation files

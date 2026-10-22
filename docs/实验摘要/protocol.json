@@ -1,0 +1,17 @@
+{
+  "fixed_before_inference": true,
+  "image_count": 24,
+  "device": "cpu",
+  "thresholds": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "descriptive_prompt": "a photo of a {canonical category}",
+  "negative_prompt": "3 COCO categories absent from all annotations of each image, fixed in selection.json",
+  "matching": "same category; confidence-descending greedy one-to-one IoU>=0.50; unmatched detections with crowd IoA>=0.50 ignored",
+  "scope": "only predeclared scene-group vocabulary is evaluated; no mAP; no novel-class claim",
+  "timing": "first detector construction, first detect call; then 1 warm-up + 5 repeats on first image in each group, .25, same vocabulary",
+  "bootstrap": "2000 stratified image resamples, 4 images per group, seed 20261022, percentile 95% CI",
+  "plan_sha256": "f07b9cd97064da59e99183a02925b329114acdb51467f3310f7de03073ed2a3d"
+}
